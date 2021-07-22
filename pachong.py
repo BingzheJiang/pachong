@@ -14,7 +14,6 @@
 #     }
 # print(result)
 #
-# import re
 # for item in data:
 #     result={
 #         "title":item.get_text(),
