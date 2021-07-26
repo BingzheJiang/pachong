@@ -5,7 +5,7 @@ import re
 list=re.findall(r"\d+","我的电话是:1515，我女朋友的电话是:168295")
 print(list)
 
-#finditer:匹配字符串中所有的内容，返回的是迭代器，效率高
+#finditer:匹配字符串中所有的内容，返回的是迭代器，效率高，常用
 it=re.finditer(r"\d+","我的电话是:1515，我女朋友的电话是:168295")
 for i in it:
     print(i)
@@ -20,3 +20,22 @@ print(s.group())
 s=re.match(r"\d+","10086，我女朋友的电话是：100")
 print(s.group())
 
+#预加载正则表达式
+obj=re.compile(r"\d+")
+ret03=obj.finditer("10086，我女朋友的电话是：100")
+for it in ret03:
+    print(it.group())
+
+ret03=obj.findall("sdgsdgsadg5505")
+print(ret03)
+
+s = """
+<div class='⻄游记'><span id='10010'>中国联通
+</span></div>
+"""
+obj=re.compile(r"<div class='.*?'><span id='(?P<www>\d+)'>(?P<wa>.*?)</span></div>",re.S)
+#re.S:让.能匹配换行符
+result=obj.finditer(s)
+for it in result:
+    print(it.group("wa"))
+    print(it.group("www"))
